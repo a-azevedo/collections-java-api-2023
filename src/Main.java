@@ -24,9 +24,13 @@ public class Main {
         Cart cart = new Cart();
         cart.addItem("Iphone 14 Pro 256GB", 7599d, 2);
         cart.addItem("Camiseta Nike", 119d, 1);
+        cart.addItem("Camiseta Nike", 119d, 1);
         cart.addItem("Bermuda Jeans Nike", 159d, 1);
 
-        cart.removeNamedItemRevamped("bermuda jeans nike");
+        //cart.removeNamedItemRevamped("camiseta nike");
+        //cart.removeAllByName();
+        //cart.removeNamedItem("camiseta nike");
+        cart.removeByNameWithIterator("camiseta nike");
 
         cart.showShoppingCartDetails();
         System.out.println("Total: " + cart.evaluate(cart));
