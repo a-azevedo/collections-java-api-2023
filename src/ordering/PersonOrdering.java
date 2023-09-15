@@ -22,6 +22,12 @@ public class PersonOrdering {
         return personsByAge;
     }
 
+    public List<Person> orderByHeight(){
+        List<Person> personsByHeight = new ArrayList<>(persons);
+        Collections.sort(personsByHeight, new ComparatorPersonByHeight());
+        return personsByHeight;
+    }
+
     public static void main(String[] args) {
 
         PersonOrdering po = new PersonOrdering();
@@ -32,5 +38,6 @@ public class PersonOrdering {
 
         System.out.println(po.persons);
         System.out.println(po.orderByAge());
+        System.out.println(po.orderByHeight());
     }
 }
