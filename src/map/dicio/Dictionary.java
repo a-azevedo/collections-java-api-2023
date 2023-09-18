@@ -12,12 +12,12 @@ public class Dictionary {
     }
 
     public void addWord(String word, String definition){
-        dictionary.put(word,definition);
+        dictionary.put(word.toLowerCase(),definition.toLowerCase());
     }
 
     public void removeWord(String word){
         if(!dictionary.isEmpty()){
-            dictionary.remove(word);
+            dictionary.remove(word.toLowerCase());
         }
     }
 
@@ -28,7 +28,7 @@ public class Dictionary {
     public String findWord(String word){
         String definition = null;
         if(!dictionary.isEmpty()){
-            definition = dictionary.get(word);
+            definition = dictionary.get(word.toLowerCase());
         }
         return definition;
     }
@@ -43,6 +43,6 @@ public class Dictionary {
         d.showAllWords();
         d.removeWord("Fuzil");
         d.showAllWords();
-        System.out.println(d.findWord("Escova"));
+        System.out.println(d.findWord("relógio"));
     }
 }
