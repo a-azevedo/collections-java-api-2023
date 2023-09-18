@@ -1,6 +1,8 @@
 package set.ordering.student;
 
-public class Student {
+import java.util.Objects;
+
+public class Student implements Comparable<Student>{
     private final long registration;
     private final String name;
     private final double grade;
@@ -9,5 +11,43 @@ public class Student {
         this.registration = registration;
         this.name = name;
         this.grade = grade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student student)) return false;
+        return registration == student.registration;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(registration);
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return name.compareToIgnoreCase(o.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "registration=" + registration +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                '}';
+    }
+
+    public long getRegistration() {
+        return registration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getGrade() {
+        return grade;
     }
 }
