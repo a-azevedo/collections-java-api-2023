@@ -47,7 +47,7 @@ public class TaskManager {
         }
         return doneTasks;
     }
-    public Set<Task> getPendindTasks(){
+    public Set<Task> getPendingTasks(){
         Set<Task> pendingTasks = new TreeSet<>();
         for(Task t : todo){
             if(!t.isDone()){
@@ -77,7 +77,7 @@ public class TaskManager {
         tm.setTaskToDone("ler 10 páginas de um livro");
         tm.showTasks();
         System.out.println(tm.getDoneTasks());
-        System.out.println(tm.getPendindTasks());
+        System.out.println(tm.getPendingTasks());
         tm.clearAllTask();
         tm.showTasks();
         tm.tasksCount();
