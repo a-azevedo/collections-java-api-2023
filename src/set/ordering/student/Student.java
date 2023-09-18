@@ -1,5 +1,6 @@
 package set.ordering.student;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Student implements Comparable<Student>{
@@ -37,6 +38,14 @@ public class Student implements Comparable<Student>{
                 ", name='" + name + '\'' +
                 ", grade=" + grade +
                 '}';
+    }
+
+    static class ComparatorStudentByGrade implements Comparator<Student> {
+
+        @Override
+        public int compare(Student o1, Student o2) {
+            return Double.compare(o1.getGrade(), o2.getGrade());
+        }
     }
 
     public long getRegistration() {
