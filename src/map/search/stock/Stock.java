@@ -1,8 +1,6 @@
 package map.search.stock;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Stock {
@@ -38,21 +36,63 @@ public class Stock {
             for(Product p : stock.values()){
                 if(p.getPrice() > maxPrice){
                     maxPrice = p.getPrice();
+                    moreExpensiveProduct = p;
                 }
-                moreExpensiveProduct = p;
-                break;
             }
         }
         return moreExpensiveProduct;
     }
+
+    public Product lessExpensiveProduct(){
+        double minPrice = Double.MAX_VALUE;
+        Product lessExpensiveProduct = null;
+        for(Product p : stock.values()){
+            if(p.getPrice() < minPrice){
+                minPrice = p.getPrice();
+                lessExpensiveProduct = p;
+            }
+        }
+        return lessExpensiveProduct;
+    }
+
+    public Product lessImpactfullValueInStock(){
+        double minValueInStock = Double.MAX_VALUE;
+        Product lessExpensiveProduct = null;
+        if(!stock.isEmpty()){
+            for(Product p : stock.values()){
+                if(p.getPrice() * p.getAmount() < minValueInStock){
+                    minValueInStock = p.getPrice() * p.getAmount();
+                    lessExpensiveProduct = p;
+                }
+            }
+        }
+        return lessExpensiveProduct;
+    }
+
+    public Product moreImpactfullValueInStock(){
+        Product moreImpactfullInValue = null;
+        double maxAgregatedValue = Double.MIN_VALUE;
+        if(!stock.isEmpty()){
+            for (Product p : stock.values()){
+                if (p.getPrice() * p.getAmount() > maxAgregatedValue){
+                    maxAgregatedValue = p.getPrice() * p.getAmount();
+                    moreImpactfullInValue = p;
+                }
+            }
+        }
+        return moreImpactfullInValue;
+    }
     public static void main(String[] args) {
         Stock stock = new Stock();
-        stock.addProduct(444L, "Xbox Series X", 4000d, 40);
-        stock.addProduct(789L, "Ipad 10", 5500d, 20);
-        stock.addProduct(272L, "RTX 4090", 11000d, 80);
+        stock.addProduct(444L, "Xbox Series X", 4000d, 40); //160000
+        stock.addProduct(789L, "Ipad 10", 5500d, 200);       //110000
+        stock.addProduct(272L, "RTX 4090", 11000d, 80);     //880000
 
         stock.showAllProducts();
         System.out.println(stock.evaluateTotalStockValue());
         System.out.println(stock.moreExpensiveProduct());
+        System.out.println(stock.lessExpensiveProduct());
+        System.out.println(stock.moreImpactfullValueInStock());
+        System.out.println(stock.lessImpactfullValueInStock());
     }
 }
