@@ -1,12 +1,14 @@
 package map.ordering;
 
 
+import java.util.Set;
+
 public class Event {
 
     private final String eventName;
-    private final String featuring;
+    private final Set<String> featuring;
 
-    public Event(String eventName, String featuring) {
+    public Event(String eventName, Set<String> featuring) {
         this.eventName = eventName;
         this.featuring = featuring;
     }
