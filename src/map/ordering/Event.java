@@ -15,9 +15,17 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "eventName='" + eventName + '\'' +
-                ", featuring='" + featuring + '\'' +
-                '}' + '\n' ;
+        return "Evento: " +
+                eventName +
+                ", Atrações: '" + featuring
+                + '\n' ;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public Set<String> getFeaturing() {
+        return featuring;
     }
 }

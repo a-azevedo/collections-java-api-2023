@@ -17,7 +17,16 @@ public class EventSchedule {
     }
 
     public void showEvents(){
-        System.out.println(eventSchedule);
+        if (!eventSchedule.isEmpty()){
+            for (Map.Entry<LocalDate, Event> entry : eventSchedule.entrySet()){
+                System.out.println("Data: " + entry.getKey() + " |" +
+                        " Evento: " + entry.getValue().getEventName() + " |" +
+                        " Atrações: " + entry.getValue().getFeaturing()
+                );
+            }
+        }else {
+            System.out.println("Nenhum evento disponível");
+        }
     }
 
     public Event getNextEvent(){
@@ -36,23 +45,23 @@ public class EventSchedule {
     public static void main(String[] args) {
 
         EventSchedule es = new EventSchedule();
-        Set<String> artists = new HashSet<>();
-        Set<String> artists2 = new HashSet<>();
-        Set<String> artists3 = new HashSet<>();
+        Set<String> artistsOfDayOne = new HashSet<>();
+        Set<String> artistsOfDayTwo = new HashSet<>();
+        Set<String> artistsOfDayThree = new HashSet<>();
 
-        artists.add("MC Paiva");
-        artists.add("Oruan");
-        artists.add("Cabelihno");
-        artists2.add("MC Poze");
-        artists2.add("Gaab");
-        artists2.add("Orochi");
-        artists3.add("Ferrugem");
-        artists3.add("Sorriso Maroto");
-        artists3.add("Thiaguinho");
+        artistsOfDayOne.add("MC Paiva");
+        artistsOfDayOne.add("Oruan");
+        artistsOfDayOne.add("Cabelihno");
+        artistsOfDayTwo.add("MC Poze");
+        artistsOfDayTwo.add("Gaab");
+        artistsOfDayTwo.add("Orochi");
+        artistsOfDayThree.add("Ferrugem");
+        artistsOfDayThree.add("Sorriso Maroto");
+        artistsOfDayThree.add("Thiaguinho");
 
-        es.addEvent(LocalDate.parse("30/11/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Explode Funk", artists);
-        es.addEvent(LocalDate.parse("25/12/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Cidade Nova", artists2);
-        es.addEvent(LocalDate.parse("25/11/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Pagode de Elite", artists3);
+        es.addEvent(LocalDate.parse("30/11/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Explode Funk", artistsOfDayOne);
+        es.addEvent(LocalDate.parse("25/12/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Cidade Nova", artistsOfDayTwo);
+        es.addEvent(LocalDate.parse("25/11/2023",DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Pagode de Elite", artistsOfDayThree);
 
         es.showEvents();
         System.out.println(es.getNextEvent());
