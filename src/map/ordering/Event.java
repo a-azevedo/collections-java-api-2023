@@ -1,9 +1,10 @@
 package map.ordering;
 
+
 public class Event {
 
-    private String eventName;
-    private String featuring;
+    private final String eventName;
+    private final String featuring;
 
     public Event(String eventName, String featuring) {
         this.eventName = eventName;
@@ -15,14 +16,6 @@ public class Event {
         return "Event{" +
                 "eventName='" + eventName + '\'' +
                 ", featuring='" + featuring + '\'' +
-                '}';
-    }
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    public String getFeaturing() {
-        return featuring;
+                '}' + '\n' ;
     }
 }
