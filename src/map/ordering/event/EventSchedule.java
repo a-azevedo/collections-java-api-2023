@@ -1,4 +1,4 @@
-package map.ordering;
+package map.ordering.event;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
